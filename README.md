@@ -139,6 +139,24 @@ npm i jsonwebtoken
 npm i passport passport-jwt
 ```
 
+- vue前后端连载 `cnpm i concurrently`
+  
+  // 后端项目放外面, 项目里面新建vue前端项目client
+  
+  // 而后配置 vue/package.json 加 `"start": "npm run serve" `
+  
+  // 而后配置后端 package.json 
+```json
+"scripts": {
+  "client-install": "npm install --prefix client", // 新加 client前端 install依赖的模块,代表启动的时候要装client依赖的模块(--prefix 前缀)
+  "client": "npm start --prefix client", // npm start启动前端client项目 --prefix 告诉他启动路径 client
+  "start": "node server.js",
+  "server": "nodemon server.js",
+  "dev": "concurrently \"npm run server\" \"npm run client\"" // dev前后连载名字 依赖concurrently 后面分别前后启动项目命令
+},
+```
+
+
 ------------------------------------------------------------
 ------------------------------------------------------------
   
