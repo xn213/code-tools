@@ -253,3 +253,11 @@ git clone https://gitee.com/uiw/uiw.git --depth 1 -b gh-pages
 
 git clone https://github.com/uiwjs/uiwjs.github.io.git --depth 1 -b master
 ```
+
+
+### 博客创建工具
+
+- hexo 创建的博客 git 部署工具: 项目根目录安装
+```
+cnpm i --save hexo-deployer-git
+```
