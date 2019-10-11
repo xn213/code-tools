@@ -35,10 +35,62 @@ vue serve demo.vue
 - 使用 vue 2.x 的模板
 
 ```
-cnpm install -g @vue/cli-init // 安装这个模块
-// 就可以使用2.x的模板：vue init webpack my-project
+cnpm install -g @vue/cli-init
+
+// 安装这个模块就可以使用vue 2.x的模板：
+vue init webpack my-project
 ```
 
+------------------------------------------------------------
+
+### node
+
+- 管理 node 版本
+```
+cnpm install -g n // 安装模块n 这个模块是专门用来管理node.js版本的
+
+n stable // 升级node.js到最新稳定版
+
+n后面也可以跟随版本号比如：
+
+n v0.10.26
+或
+n 0.10.26
+```
+
+- node 开启本地服务器:  node / express 
+
+```
+node server.js // 开启本地服务器
+```
+
+- nodemon 自动更新服务 serve.js 变化
+
+```
+(sudo)(mac下加个sudo) npm i nodemon -g
+
+ // 使用 nodemon 自动保存server.js 中的变化(监听就不用重启服务了)
+```
+
+- serve 开启静态服务,
+
+```
+cnpm i serve -g
+
+应用: <pro-name>/使用: serve -s dist
+```
+---------------------------------------------------
+- python37 启动一个本地服务器 项目文件夹下:
+
+```
+(python -m SimpleHTTPSever 8080) // 旧版
+
+python -m http.server 8080
+
+浏览器打开项目文件夹下的demo.html : 即 localhost:8080/demo.html
+```
+
+------------------------------------------------------------
 ------------------------------------------------------------
   
 ## 开发工具
