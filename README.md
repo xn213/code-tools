@@ -13,6 +13,8 @@
 
 ### 命令行 `Terminal Emulator`
 
+- 本地生成秘钥 SSH: `ssh-keygen -t rsa -C "yourEmail"`
+
 1. [Cmder.exe](https://cmder.net/) win 集成 git/ 部分linux命令 [官方下载](https://github.com/cmderdev/cmder/releases/download/v1.3.12/cmder.zip) / [静态下载](http://xn213-img.test.upcdn.net/res/codetools/cmder.zip)
 
 - 添加到鼠标右键 命令行: `Cmder.exe /REGISTER ALL`
