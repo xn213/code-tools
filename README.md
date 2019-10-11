@@ -7,7 +7,39 @@
  */
 ---
 
-# 开发工具和技巧
+# 开发技巧和工具
+
+## 开发技巧
+
+### Vue
+
+- 全局安装vue-cli3
+
+```
+cnpm install -g @vue/cli
+
+vue -V // 查看版本是否为3.x
+```
+
+- 启动单个vue文件
+```
+// 安装扩展，此后可以快速启动单个vue文件
+
+cnpm install -g @vue/cli-service-global
+
+vue serve demo.vue
+```
+> 快速启动demo文件
+> // 如果style中lang='scss' 则需要安装sass依赖sass-loader
+
+- 使用 vue 2.x 的模板
+
+```
+cnpm install -g @vue/cli-init // 安装这个模块
+// 就可以使用2.x的模板：vue init webpack my-project
+```
+
+------------------------------------------------------------
   
 ## 开发工具
 
