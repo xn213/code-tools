@@ -118,6 +118,27 @@ npm update -g express  # 升级全局安装的express模块
 npm uninstall XXX -S   # 删除XXX依赖
 npm uninstall express  # 删除指定的模块
 ```
+
+- [MongoDB 数据库 登录:](https://cloud.mongodb.com/user) (mLab(注册送500M)) 已转移 MongoDB下
+  
+
+- [加密 bcrypt](https://www.npmjs.com/package/bcrypt) : 
+
+  后端服务器对传过来的注册密码加密, 什么地方用就在什么地方引
+```
+npm i bcrypt
+```
+
+- [jwt 登录返回token](https://www.npmjs.com/package/jsonwebtoken) => 使用jwt(jsonwebtoken)
+```
+npm i jsonwebtoken
+```
+
+- 验证token 使用 passport passport-jwt
+```
+npm i passport passport-jwt
+```
+
 ------------------------------------------------------------
 ------------------------------------------------------------
   
