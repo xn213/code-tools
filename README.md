@@ -105,6 +105,6 @@
 
 ### 其他工具
 
-- [win按键回显工具: KeyCastOW](https://brookhong.github.io/2014/04/28/keycast-on-windows-cn.html)
+- [win按键回显工具: KeyCastOW](https://brookhong.github.io/2014/04/28/keycast-on-windows-cn.html) | [下载](https://www.ugmfree.it/Forum/messages.aspx?TopicID=513)
 
 - [mac: KeyCastr](https://github.com/keycastr/keycastr)
