@@ -200,3 +200,56 @@ python -m http.server 8080
 - [win按键回显工具: KeyCastOW](https://brookhong.github.io/2014/04/28/keycast-on-windows-cn.html) | [下载](https://www.ugmfree.it/Forum/messages.aspx?TopicID=513)
 
 - [mac: KeyCastr](https://github.com/keycastr/keycastr)
+
+
+- 全局安装 sgo , 克隆各种官方文档到本地 离线阅读, 
+
+  将文档克隆到本地，通过 sgo 工具预览本地各种文档的。
+
+```bash
+npm install -g sgo # 安装 sgo
+sgo --fallback index.html # 创建静态服务，预览网站
+```
+
+// 如: [cn.vuejs.org](git clone https://github.com/vuejs/cn.vuejs.org.git --depth 1 -b gh-pages)
+
+  - - #### React
+```bash
+git clone https://github.com/reactjs/zh-hans.reactjs.org.git --depth 1 -b gh-pages
+
+cd zh-hans.reactjs.org # 进入目录
+
+sgo --fallback index.html # 创建静态服务，预览网站
+```
+
+  - - #### Vue
+```bash
+git clone https://github.com/vuejs/cn.vuejs.org.git --depth 1 -b gh-pages
+```
+
+  - - #### Ant Design
+```bash
+git clone https://gitee.com/ant-design/ant-design.git --depth 1 -b gh-pages
+
+# or
+
+git clone https://github.com/ant-design/ant-design.git --depth 1 -b gh-pages
+```
+
+  - - #### Ant Design Pro
+```bash
+git clone https://gitee.com/ant-design/ant-design-pro-site.git --depth 1 -b master
+
+# or
+
+git clone https://github.com/ant-design/ant-design-pro.git --depth 1 -b gh-pages
+```
+
+  - - #### uiw
+```bash
+git clone https://gitee.com/uiw/uiw.git --depth 1 -b gh-pages
+
+# or
+
+git clone https://github.com/uiwjs/uiwjs.github.io.git --depth 1 -b master
+```
