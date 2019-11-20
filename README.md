@@ -324,7 +324,19 @@ git clone https://github.com/uiwjs/uiwjs.github.io.git --depth 1 -b master
 
 ### 博客创建工具
 
-- hexo 创建的博客 git 部署工具: 项目根目录安装
-```
-cnpm i --save hexo-deployer-git
-```
+1. hexo  [使用 hexo 创建博客](https://xn213.github.io/hugo-blog/2019/07/hexo-create-blog/)
+
+    hexo 创建的博客 git 部署工具: 项目根目录安装
+    ```shell
+    cnpm i --save hexo-deployer-git
+    ```
+
+2. hugo  [使用 hugo 创建博客](https://xn213.github.io/hugo-blog/2019/07/hugo-create-blog/)
+
+    - 相对于hexo, 简单, 不易出错
+   
+3. VuePress - Vue 驱动的静态网站生成器 文档类型
+
+    - [中文文档](https://vuepress.vuejs.org/zh/)
+
+    - [VuePress + GitHubPages 搭建博客](https://xn213.github.io/fe-notes/CodeTools/Vuepress/GithubPagesVuepressBlog.html)
