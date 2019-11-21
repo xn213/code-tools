@@ -8,8 +8,7 @@
 
 定义一个全局异常处理方法：
 
-
-```javascript
+```js
 // errHandler.js
 window.errHandler = function () { // 不能使用箭头函数
   if (err.code && err.code !== 200) {
@@ -23,7 +22,7 @@ window.errHandler = function () { // 不能使用箭头函数
 在入口文件中导入：
 
 
-```javascript
+```js
 // src/main.js
 import 'errHandler.js'
 ```
@@ -31,7 +30,7 @@ import 'errHandler.js'
 在组件中使用：
 
 
-```javascript
+```js
 // xxx.vue
 export default {
   created () {
@@ -57,14 +56,14 @@ export default {
 
 使用方法与前一种大同小异，就不多作介绍了。￣ω￣=
 
-### Moment.JS 与 Webpack
+### Moment.js 与 Webpack
 
 在使用 `Moment.js` 遇到一些问题，发现最终打包的文件中将 `Moment.js` 的全部语言包都打包了，导致最终文件徒然增加 100+kB。查了一下，发现可能是 `webpack` 打包或是 `Moment.js` 资源引用问题（?），目前该问题还未被妥善处理，需要通过一些 `trick` 来解决这个问题。
 
 在 `webpack` 的生产配置文件中的 `plugins` 字段中添加一个插件，使用内置的方法类 [ContextReplacementPlugin](https://webpack.js.org/plugins/context-replacement-plugin/) 过滤掉 `Moment.js` 中那些用不到的语言包：
 
 
-```javascript
+```js
 // build/webpack.prod.conf.js
 new webpack.ContextReplacementPlugin(/moment[\\/]locale$/, /^\.\/(zh-cn)$/)
 ```
@@ -104,11 +103,13 @@ import Index from '@/components/Index'
 module.exports = {
   configureWebpack: {
     resolve: {
-      extensions: ['', '', ''],
+      extensions: ['.js', '.vue', '.json'],
       alias: {
         vue$: 'vue/dist/vue.esm.js',
         '@': resolve('src'),
-        utils: resolve('src/utils')
+        utils: resolve('src/utils'),
+        api: resolve('src/api'),
+        components: resolve('src/components'),
       }
     },
     devServer: {
@@ -148,7 +149,7 @@ import YourComponent from '~/YourComponent'
 ```
 
 
-```javascript
+```js
 change (e) {
   let curVal = e.target.value
   if (/^\d+$/.test(curVal)) {
@@ -335,7 +336,7 @@ vm.$set("depAirportZh" ,ticketInfo.flight.fromSegments[ticketInfo.flight.fromSeg
 
 ```js
 <div id="example">
-    a = {{ a }}, b = {{ b }}
+  a = {{ a }}, b = {{ b }}
 </div>
 
 var vm = new Vue({
@@ -351,4 +352,4 @@ var vm = new Vue({
 });
 ```
 
-对于上面计算属性b是怎么被使用的？实际上它并没有把计算数据放到`$data`里，而是通过`Object.definePropert(tihs, key, def)`直接定义到了实例上。
+对于上面计算属性b是怎么被使用的？实际上它并没有把计算数据放到`$data`里，而是通过`Object.defineProperty(this, key, def)`直接定义到了实例上。
