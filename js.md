@@ -226,3 +226,441 @@ async function getABC() {
 > 讨论地址：[10 分钟学会 JavaScript 的 Async/Await](https://github.com/dev-reading/fe/issues/3)
 >
 > 如果你想参与讨论，请[点击这里](https://github.com/dev-reading/fe)
+
+
+---
+---
+
+# JS操作小技巧，工作简单了
+
+## 一、Optional Chaining
+
+> 在javaScript中，对象的属性链访问，很容易因为某一个属性不存在出现
+> Cannot read property 'xxx' of undefined的问题，那么Optional Chaining就添加了?.操作符，它会先判断前面的值，如果undefined或者null，就结束后面的调用，直接返回undefined;
+
+### 1.1 访问深度嵌套的属性
+
+```js
+const obj = {
+  foo: {
+    bar: {
+      baz: 42,
+    },
+  },
+};
+
+const baz = obj?.foo?.bar?.baz; // 42
+
+const safe = obj?.qux?.baz; // undefined
+
+// Optional chaining and normal chaining can be intermixed
+obj?.foo.bar?.baz; // Only access `foo` if `obj` exists, and `baz` if
+                   // `bar` exists
+
+// Example usage with bracket notation:
+obj?.['foo']?.bar?.baz // 42
+```
+
+### 1.2 调用深层嵌套的函数
+
+```js
+const obj = {
+  foo: {
+    bar: {
+      baz() {
+        return 42;
+      },
+    },
+  },
+};
+
+const baz = obj?.foo?.bar?.baz(); // 42
+
+const safe = obj?.qux?.baz(); // undefined
+const safe2 = obj?.foo.bar.qux?.(); // undefined
+
+const willThrow = obj?.foo.bar.qux(); // Error: not a function
+
+// Top function can be called directly, too.
+function test() {
+  return 42;
+}
+test?.(); // 42
+
+exists?.(); // undefined
+```
+
+### 1.3 构造深层嵌套的类
+
+```js
+const obj = {
+  foo: {
+    bar: {
+      baz: class {
+      },
+    },
+  },
+};
+
+const baz = new obj?.foo?.bar?.baz(); // baz instance
+
+const safe = new obj?.qux?.baz(); // undefined
+const safe2 = new obj?.foo.bar.qux?.(); // undefined
+
+const willThrow = new obj?.foo.bar.qux(); // Error: not a constructor
+
+// Top classes can be called directly, too.
+class Test {
+}
+new Test?.(); // test instance
+
+new exists?.(); // undefined
+```
+
+### 1.4 安装使用
+
+* 安装：
+
+```js
+npm install --save-dev @babel/plugin-proposal-optional-chaining
+yarn add @babel/plugin-proposal-optional-chaining --dev
+```
+
+* 配置.babelrc：
+
+```js
+{
+  "plugins": ["@babel/plugin-proposal-optional-chaining"]
+}
+```
+
+## 二、随机生成字母和数组的组合
+
+```js
+Math.random().toString(36).substr(2);
+```
+
+![](data:image/svg+xml;utf8,<?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="946" height="119"></svg>)
+
+## 三、转换布尔值
+
+```js
+const isTrue  = !0;
+const isFalse = !1;
+const alsoFalse = !!0;
+console.log(isTrue); // Result: true
+console.log(typeof true); // Result: "boolean"
+```
+
+## 四、转换数字
+
+```js
+const number = '10';
+number = +number;
+console.log(number); // 10
+```
+
+```js
+const number = '10';
+number = ~~number;
+console.log(number); // 10
+```
+
+## 五、替代Math.pow
+
+```js
+console.log(Math.pow(2, 3));
+// 替代1
+console.log(2 ** 3);
+// 替代二，只能以二作为基数
+console.log(2 << (3 - 1));
+```
+
+![](data:image/svg+xml;utf8,<?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1063" height="224"></svg>)
+
+## 六、快速浮点数转整数
+
+```js
+console.log(10.9 | 0);  // 10
+console.log(-10.9 | 0); // 10
+```
+
+![](data:image/svg+xml;utf8,<?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1280" height="156"></svg>)
+
+```js
+console.log(~~10.9);
+console.log(~~-10.9); 
+```
+
+![](data:image/svg+xml;utf8,<?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1280" height="124"></svg>)
+
+## 七、数组降维度
+
+二维数组
+
+```js
+let arr = [ [1], [2], [3] ];
+arr = Array.prototype.concat.apply([], arr);
+console.log(arr);// [1, 2, 3]
+
+let array = [ [1], [2], [3] ];
+array = array.flat(2);
+console.log(array); // [1, 2, 3]
+```
+
+![](data:image/svg+xml;utf8,<?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1280" height="164"></svg>)
+
+多维数组
+
+```js
+let arrMore = [1, 2, [3], [[4]]];
+arrMore = arrMore.flat(Infinity);
+console.log(arrMore);
+```
+
+![](data:image/svg+xml;utf8,<?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1138" height="165"></svg>)
+
+## 八、判断小数是否相等
+
+```js
+console.log(0.1 + 0.2  === 0.3); // false
+```
+
+```js
+function equal(number1, number2) {
+    return Math.abs(number1 - number2) < Math.pow(2, -52);
+}
+console.log(equal(0.1 + 0.2, 0.3));
+```
+
+![](data:image/svg+xml;utf8,<?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="998" height="87"></svg>)
+
+## 九、判断变量是否是数组
+
+```js
+1. instanceof
+2. array.__proto__.constructor === Array
+3. array.constructor === Array
+4. Array.isArray（兼容性问题）
+5. Object.prototype.toString.call([]) === "[object Array]"（最通用）
+```
+
+> PS：instanceof和constructor判断的变量，必须在当前页面声明。例如：父页面是一个框架，框架中引入一个页面（子页面），在子页面中申明的array，并将其复制给父元素的一个变量，这时instanceof和constructor判断该变量，将返回false。
+> -------------------------------------------------------------------------------------------------
+> 原因：
+> array是复合类型。在传递的过程中，仅仅是引用地址的传递。
+> 每个页面的array原生对象引用的地址是不一样的，在子页面中声明的array，所对应的构造函数，是子页面的array对象，在父页面进行判断时，使用的并不是子页面的array。
+
+## 十、数组占位
+
+```js
+let array = Array(3).fill('');
+console.log(array); //["", "", ""]
+```
+
+## 十一、数组去重多重方式
+
+### 11.1 Set(最常用)
+
+```js
+Array.prototype.unique = function() {
+    return [...new Set(this)];
+}
+var array = [1, 2, 3, 43, 45, 1, 2, 2, 4, 5];
+array.unique();
+```
+
+![](data:image/svg+xml;utf8,<?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="985" height="157"></svg>)
+
+### 11.2 Map
+
+```js
+Array.prototype.unique = function() {
+    const tmp = new Map();
+    return this.filter(item => {
+        return !tmp.has(item) && tmp.set(item, 1);
+    })
+}
+var array = [1, 2, 3, 43, 45, 1, 2, 2, 4, 5];
+array.unique();
+```
+
+![](data:image/svg+xml;utf8,<?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1235" height="163"></svg>)
+
+### 11.3 Array.prototype.indexOf()
+
+```js
+Array.prototype.unique = function() {
+    return this.filter((item, index) => {
+        return this.indexOf(item) === index;
+    })
+}
+var array = [1, 2, 3, 43, 45, 1, 2, 2, 4, 5];
+array.unique();
+```
+
+![](data:image/svg+xml;utf8,<?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="872" height="144"></svg>)
+
+### 11.4 Array.prototype.includes()
+
+```js
+Array.prototype.unique = function() {
+    const newArray = [];
+    this.forEach(item => {
+        if (!newArray.includes(item)) {
+            newArray.push(item);
+        }
+    });
+    return newArray;
+}
+var array = [1, 2, 3, 43, 45, 1, 2, 2, 4, 5];
+array.unique();
+```
+
+![](https://user-gold-cdn.xitu.io/2019/11/20/16e86e81547b7be9?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+
+### 11.5 Array.prototype.reduce()
+
+```js
+Array.prototype.unique = function() {
+    return this.sort().reduce((init, current) => {
+        if (init.length === 0 || init[init.length - 1] !== current) {
+            init.push(current);
+        }
+        return init;
+    }, []);
+}
+var array = [1, 2, 3, 43, 45, 1, 2, 2, 4, 5];
+array.unique();
+
+```
+
+![](https://user-gold-cdn.xitu.io/2019/11/20/16e86eacf545fb4b?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+
+## 十二、短路运算(&& ||)
+
+使用&&将返回第一个条件为假的值。如果每个操作数的计算值都为true，则返回最后一个计算过的表达式。
+
+```js
+let one = 1, two = 2, three = 3;
+console.log(one && two && three); // 3
+console.log(0 && null); // 0
+```
+
+使用||将返回第一个条件为真的值。如果每个操作数的计算结果都为false，则返回最后一个计算过的表达式。
+
+```js
+let one = 1, two = 2, three = 3;
+console.log(one || two || three); // 1
+console.log(0 || null); // null
+```
+
+## 十三、过滤空值
+
+```js
+let result1 = [1, 2, 0, undefined, null, false, ''].filter(Boolean);
+console.log(result1);
+```
+
+![](data:image/svg+xml;utf8,<?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1280" height="134"></svg>)
+
+## 十四、创建空对象
+
+```js
+let dict = Object.create(null);
+```
+
+## 十五、合并对象
+
+```js
+const person = { name: 'David Walsh', gender: 'Male' };
+const tools = { computer: 'Mac', editor: 'Atom' };
+const attributes = { handsomeness: 'Extreme', hair: 'Brown', eyes: 'Blue' };
+const summary = { ...person, ...tools, ...attributes };
+console.log(summary);
+```
+
+![](data:image/svg+xml;utf8,<?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1241" height="183"></svg>)
+
+## 十六、字符串去空格
+
+```js
+String.prototype.trim = function(){return this.replace(/^\s+|\s+$/g, "");};
+```
+
+## 十七、对象转换为数组
+
+```js
+var argArray = Array.prototype.slice.call(arguments);
+```
+
+## 十八、逗号操作符
+
+```js
+var a = 0; 
+var b = ( a++, 99 ); 
+console.log(a);  
+console.log(b);
+```
+
+![](data:image/svg+xml;utf8,<?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1026" height="178"></svg>)
+
+## 十九、 localStorage.getItem('key') === localStorage.key
+
+来源: [沉末_](https://juejin.im/user/5b7c1be9e51d4538b35bfc32)评论。
+
+```js
+localStorage.setItem('item', 1);
+localStorage.getItem('item') === localStorage.item;
+```
+
+![](data:image/svg+xml;utf8,<?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1280" height="123"></svg>)
+
+## 二十、从一堆文本中获取手机号
+
+来源: [飞蛾扑火](https://juejin.im/user/5bf7abd9e51d450c487d07f6)评论。
+
+```js
+([\s,，、]*)?((手机|联系方式|电话|联系人)号?)?(号码)?([、:：\s]*)?(?:[\s(（]*?\+?(86)?[\s)）]*)(1\d{2})(?:[-\s]*)(\d{4})(?:[-\s]*)(\d{4})(?=\D|$)
+```
+
+![](data:image/svg+xml;utf8,<?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1280" height="94"></svg>)
+
+![](data:image/svg+xml;utf8,<?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1280" height="137"></svg>)
+
+## 二十一、整数变量交换
+
+来源: [快乐的仲子](https://juejin.im/user/571dc56071cfe4006b558696)评论。
+
+```js
+let a = 10;
+let b = 50;
+a = a ^ b;
+b = a ^ b;
+a = a ^ b;
+console.log(a, b); // 50 10
+```
+
+![](https://user-gold-cdn.xitu.io/2019/11/21/16e8e12bd865fb83?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+
+## 二十二、整数变量交换
+
+```js
+var a = 2;
+var b = 4;
+a = a + b;
+b = a - b;
+a = a - b;
+console.log(a, b); // 4 2
+```
+
+![](https://user-gold-cdn.xitu.io/2019/11/21/16e8e1630bbeb86c?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+
+## 评论出你的“奇人异巧”，让大家都学习。
+
+参考：
+
+* [@ babel / plugin-proposal-optional-chaining](https://babeljs.io/docs/en/next/babel-plugin-proposal-optional-chaining)
+* [解锁多种JavaScript数组去重姿势](https://juejin.im/post/5b0284ac51882542ad774c45#heading-1)
+* [大部分学习视频都不会教的11个JS技巧](https://mp.weixin.qq.com/s/8LXs6UxNlRNarWTuD3Kr7g)
+* [8 个实用的 JavaScript 技巧](https://juejin.im/post/5cff97276fb9a07ea420749f)
