@@ -180,7 +180,10 @@ npm i passport passport-jwt
 
 1. 插件: 
 
-- [Vimium: ](https://vimium.github.io/) 超级方便的[快捷键](http://xn213-img.test.upcdn.net/res/img/Chrome-Vimium快捷键.jpg)操作
+- [Surfingkeys github](https://github.com/brookhong/surfingkeys) || 安装 :  [Chrome web store](https://chrome.google.com/webstore/detail/surfingkeys/gfbliohnnapiefjpjlpjnehglfpaknnc) 替代 Vimium
+
+- <del>[Vimium: ](https://vimium.github.io/)  超级方便的[快捷键](http://xn213-img.test.upcdn.net/res/img/Chrome-Vimium快捷键.jpg)操作</del>
+
 
 - [FeHelper](https://www.baidufe.com/fehelper) → [github](https://github.com/zxlie/FeHelper)
 
