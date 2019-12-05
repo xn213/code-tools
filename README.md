@@ -43,9 +43,10 @@ vue init webpack my-project
 
 ------------------------------------------------------------
 
-### node
+### Node
 
 - 管理 node 版本
+- 
 ```
 cnpm install -g n // 安装模块n 这个模块是专门用来管理node.js版本的
 
@@ -121,7 +122,6 @@ npm uninstall express  # 删除指定的模块
 
 - [MongoDB 数据库 登录:](https://cloud.mongodb.com/user) (mLab(注册送500M)) 已转移 MongoDB下
   
-
 - [加密 bcrypt](https://www.npmjs.com/package/bcrypt) : 
 
   后端服务器对传过来的注册密码加密, 什么地方用就在什么地方引
@@ -164,15 +164,15 @@ npm i passport passport-jwt
 
 ### 命令行 `Terminal Emulator`
 
-- 本地生成秘钥 SSH: `ssh-keygen -t rsa -C "yourEmail"`
+1. 本地生成秘钥 SSH: `ssh-keygen -t rsa -C "yourEmail"`
 
-1. [Cmder.exe](https://cmder.net/) win 集成 git/ 部分linux命令 [官方下载](https://github.com/cmderdev/cmder/releases/download/v1.3.12/cmder.zip) / [静态下载](http://xn213-img.test.upcdn.net/res/codetools/cmder.zip)
+2. [Cmder.exe](https://cmder.net/) win 集成 git / 部分linux命令 [官方下载](https://github.com/cmderdev/cmder/releases/download/v1.3.12/cmder.zip) / [静态下载](http://xn213-img.test.upcdn.net/res/codetools/cmder.zip)
 
-- 添加到鼠标右键 命令行: `Cmder.exe /REGISTER ALL`
+    - 添加到鼠标右键 命令行: `Cmder.exe /REGISTER ALL`
 
-2. 命令行翻译小工具: 
-  - `cnpm i fanyi -g`
-  - Useage: `fanyi <要翻译的内容>`
+3. 命令行翻译小工具: 
+    - `cnpm i fanyi -g`
+    - Useage: `fanyi <要翻译的内容>`
 
 ------------------------------------------------------------
 
@@ -182,7 +182,7 @@ npm i passport passport-jwt
 
 - [Surfingkeys github](https://github.com/brookhong/surfingkeys) || 安装 :  [Chrome web store](https://chrome.google.com/webstore/detail/surfingkeys/gfbliohnnapiefjpjlpjnehglfpaknnc) **替代 Vimium**
 
-- <del>[Vimium: ](https://vimium.github.io/)  超级方便的[快捷键](http://xn213-img.test.upcdn.net/res/img/Chrome-Vimium快捷键.jpg)操作</del>
+  - <del>[Vimium: ](https://vimium.github.io/)  超级方便的[快捷键](http://xn213-img.test.upcdn.net/res/img/Chrome-Vimium快捷键.jpg)操作</del>
 
 
 - [FeHelper](https://www.baidufe.com/fehelper) → [github](https://github.com/zxlie/FeHelper)
@@ -227,13 +227,15 @@ npm i passport passport-jwt
 
 - [Beautify]()
 
-- [样式追踪: CSS Peek]()
-
-- [路径提示: Path Intellisense]()
-
 - [ESLint]()
 
-- [AutoFileName]()
+- 标签对高亮: [Highlight Matching Tag](https://marketplace.visualstudio.com/items?itemName=vincaslt.highlight-matching-tag)
+
+- [Gitmoji snippets](https://marketplace.visualstudio.com/items?itemName=thierrymichel.vscode-gitmoji-snippets)
+
+- 样式追踪: [CSS Peek]()
+
+- 路径提示: [Path Intellisense]()
 
 - [AutoFileName]()
 
@@ -253,7 +255,11 @@ npm i passport passport-jwt
 
 - [开头注释: vscode-fileheader](https://marketplace.visualstudio.com/items?itemName=mikey.vscode-fileheader)
 
-2. 主题
+- 文件头部注释和函数注释: [koroFileHeader](https://marketplace.visualstudio.com/items?itemName=OBKoro1.korofileheader)
+
+- [EditorConfig for VS Code](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
+
+1. 主题
 
 - [完美主题: Dracula Official](https://marketplace.visualstudio.com/items?itemName=dracula-theme.theme-dracula)
 
