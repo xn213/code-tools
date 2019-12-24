@@ -10,7 +10,8 @@
 
 ```js
 // errHandler.js
-window.errHandler = function () { // 不能使用箭头函数
+window.errHandler = function() {
+  // 不能使用箭头函数
   if (err.code && err.code !== 200) {
     this.$store.commit('err', true)
   } else {
@@ -21,7 +22,6 @@ window.errHandler = function () { // 不能使用箭头函数
 
 在入口文件中导入：
 
-
 ```js
 // src/main.js
 import 'errHandler.js'
@@ -29,22 +29,24 @@ import 'errHandler.js'
 
 在组件中使用：
 
-
 ```js
 // xxx.vue
 export default {
-  created () {
+  created() {
     this.errHandler = window.errHandler.bind(this)
   },
   method: {
-    getXXX () {
-      this.$http.get('xxx/xx').then(({ body: result }) => {
-        if (result.code === 200) {
-          // ...
-        } else {
-          this.errHandler(result)
-        }
-      }).catch(this.errHandler)
+    getXXX() {
+      this.$http
+        .get('xxx/xx')
+        .then(({ body: result }) => {
+          if (result.code === 200) {
+            // ...
+          } else {
+            this.errHandler(result)
+          }
+        })
+        .catch(this.errHandler)
     }
   }
 }
@@ -54,14 +56,13 @@ export default {
 
 在大型多人协作的项目中，污染 `window` 对象还是不太妥当的。特别是一些比较有个人特色的全局方法（可能在你写的组件中几乎处处用到，但是对于其他人来说可能并不需要）。这时候推荐写一个模块，更优雅安全，也比较自然，唯一不足之处就是每个需要使用该函数或方法的组件都需要进行导入。
 
-使用方法与前一种大同小异，就不多作介绍了。￣ω￣=
+使用方法与前一种大同小异，就不多作介绍了。￣ ω ￣=
 
 ### Moment.js 与 Webpack
 
 在使用 `Moment.js` 遇到一些问题，发现最终打包的文件中将 `Moment.js` 的全部语言包都打包了，导致最终文件徒然增加 100+kB。查了一下，发现可能是 `webpack` 打包或是 `Moment.js` 资源引用问题（?），目前该问题还未被妥善处理，需要通过一些 `trick` 来解决这个问题。
 
 在 `webpack` 的生产配置文件中的 `plugins` 字段中添加一个插件，使用内置的方法类 [ContextReplacementPlugin](https://webpack.js.org/plugins/context-replacement-plugin/) 过滤掉 `Moment.js` 中那些用不到的语言包：
-
 
 ```js
 // build/webpack.prod.conf.js
@@ -82,7 +83,6 @@ import Index from '@/components/Index'
 这个 `@` 是什么东西？后来改配置文件的时候发现这个是 `webpack` 的配置选项之一：路径别名。
 
 我们也可以在基础配置文件中添加自己的路径别名，比如下面这个就把 `~` 设置为路径 `src/components` 的别名：
-
 
 ```js
 // vue-cli 2.x build/webpack.base.js
@@ -109,7 +109,7 @@ module.exports = {
         '@': resolve('src'),
         utils: resolve('src/utils'),
         api: resolve('src/api'),
-        components: resolve('src/components'),
+        components: resolve('src/components')
       }
     },
     devServer: {
@@ -118,8 +118,8 @@ module.exports = {
           changeOrigin: true,
           target: 'https://targetUrl.net',
           headers: {
-            origin: 'targetUrl.net',
-          },
+            origin: 'targetUrl.net'
+          }
         }
       }
     }
@@ -143,11 +143,9 @@ import YourComponent from '~/YourComponent'
 
 这时我们可以使用 `@input` 或 `@change` 事件绑定我们自己的处理函数，并传入 `$event` 对象以获取当前控件的输入值：
 
-
 ```html
-<input type='text' @change='change($event)'>
+<input type="text" @change="change($event)" />
 ```
-
 
 ```js
 change (e) {
@@ -169,7 +167,6 @@ change (e) {
 由于 `Vue.js` 响应式数据依赖于**对象方法** `Object.defineProperty`。但很明显，数组这个特殊的“对象”并没有这个方法，自然也无法设置对象属性的 `descriptor`，从而也就没有 `getter()` 和 `setter()` 方法。所以在使用数组索引角标的形式更改元素数据时（`arr[index] = newVal`），视图往往无法响应式更新。  
 为解决这个问题，`Vue.js` 中提供了 `$set()` 方法：
 
-
 ```js
 vm.arr.$set(0, 'newVal')
 // vm.arr[0] = 'newVal'
@@ -179,7 +176,6 @@ vm.arr.$set(0, 'newVal')
 
 > 受现代 `JavaScript` 的限制（以及废弃 `Object.observe`），`Vue` **不能检测到对象属性的添加或删除**。由于 `Vue` 会在初始化实例时对属性执行 `getter/setter` 转化过程，所以属性必须在 `data` 对象上存在才能让 `Vue` 转换它，这样才能让它是响应的。  
 > Ref: [深入响应式原理 - Vue.js](https://cn.vuejs.org/v2/guide/reactivity.html#)
-
 
 ```js
 var vm = new Vue({
@@ -196,14 +192,9 @@ vm.b = 2
 
 推荐在开发较复杂的组件时使用 `props` 静态类型检测，提高组件的健壮性，多数情况下可以在转码阶段提前发现错误。
 
-
 ```js
 // before
-prop: [
-  'id',
-  'multiple',
-  'callback',
-]
+prop: ['id', 'multiple', 'callback']
 ```
 
 ```js
@@ -227,29 +218,23 @@ props: {
 
 #### 异步路由组件
 
-
 ```js
 const AsyncComponent = () => import('./AsyncComponent')
 ```
 
 #### 异步组件工厂
 
-
 ```js
-Vue.component(
-  'async-webpack-example',
-  () => import('./my-async-component')
-)
+Vue.component('async-webpack-example', () => import('./my-async-component'))
 ```
 
 > 相比于异步路由组建，异步组件工厂一般适用于组件内进一步小颗粒度的拆分处理，如：大体量组件内初次加载时的非必要组件（组件内嵌套的弹窗组件或 `Popover` 组件等）。
 
-
-------------------------------------------------------------------
+---
 
 ## camelClass & kebab-case
 
-HTML标签中的属性名不区分大小写。设置prop名字为camelClass形式的时候，需要转换为kebab-case形式（短横线）在HTML中使用。
+HTML 标签中的属性名不区分大小写。设置 prop 名字为 camelClass 形式的时候，需要转换为 kebab-case 形式（短横线）在 HTML 中使用。
 
 ```js
 Vue.component('child', {
@@ -270,7 +255,7 @@ Vue.component('child', {
 <comp some-prop="1"></comp>
 ```
 
-因为他是一个字面prop，它的值是字符串“1”，而不是以实际的数字传递下去。如果想传递一个真实的JavaScript类型的数字，则需要使用动态语法，从而让它的值被当做JavaScript表达式计算。
+因为他是一个字面 prop，它的值是字符串“1”，而不是以实际的数字传递下去。如果想传递一个真实的 JavaScript 类型的数字，则需要使用动态语法，从而让它的值被当做 JavaScript 表达式计算。
 
 ```html
 <!-- 传递实际的数字 -->
@@ -279,21 +264,21 @@ Vue.component('child', {
 
 ## 模板解析
 
-Vue的模板是DOM模板，使用浏览器原生的解析器而不是自己实现一个。相比字符串模板，DOM模板有一些好处，但是也有问题，它必须是有效的HTML片段。一些HTML元素对什么元素可以放在它里面有限制。常见的限制有：
+Vue 的模板是 DOM 模板，使用浏览器原生的解析器而不是自己实现一个。相比字符串模板，DOM 模板有一些好处，但是也有问题，它必须是有效的 HTML 片段。一些 HTML 元素对什么元素可以放在它里面有限制。常见的限制有：
 
-* a不能包行其他的交互元素（如按钮、链接）
+- a 不能包行其他的交互元素（如按钮、链接）
 
-* ul和ol只能直接包含li。
+- ul 和 ol 只能直接包含 li。
 
-* select只能包含option和optgroup。
+- select 只能包含 option 和 optgroup。
 
-* table只能直接包含thead、tbody、ftoot、tr、caption、col、colgroup。
+- table 只能直接包含 thead、tbody、ftoot、tr、caption、col、colgroup。
 
-* tr只能直接包含th和td。
+- tr 只能直接包含 th 和 td。
 
 在实际应用中，这些限制会导致意外的结果。尽管再简单的情况下它可能可以工作，但是我们不能依赖自定义组件在浏览器验证之前展开结果。例如`<my-select><option>....</option></my-select>`不是有效的模板，即使`my-select`组件最终展开为`<select>...</select>`。
 
-另一个结果是，自定义标签（包括自定义元素和特殊标签，如`<component>`、`<template>`、`<partial>`）不能用在ul、select、table等对内部元素有限制的标签内。放在这些元素内的自定义标签将被提到元素的外面，因而渲染不正确。
+另一个结果是，自定义标签（包括自定义元素和特殊标签，如`<component>`、`<template>`、`<partial>`）不能用在 ul、select、table 等对内部元素有限制的标签内。放在这些元素内的自定义标签将被提到元素的外面，因而渲染不正确。
 
 自定义元素应当使用`is`特性，如
 
@@ -308,8 +293,12 @@ Vue的模板是DOM模板，使用浏览器原生的解析器而不是自己实�
 ```html
 <table>
   <tbody v-for="item in items">
-    <tr>Even row</tr>
-    <tr>Odd row</tr>
+    <tr>
+      Even row
+    </tr>
+    <tr>
+      Odd row
+    </tr>
   </tbody>
 </table>
 ```
@@ -318,24 +307,29 @@ Vue的模板是DOM模板，使用浏览器原生的解析器而不是自己实�
 
 在开发业务的时候，经常会出现异步获取数据的情况，有时候数据层次比较深。如：
 
-
 ```html
-<span class="airport" v-text="ticketInfo.flight.fromSegments[ticketInfo.flight.fromSegment - 1].depAirportZh"></span>
+<span
+  class="airport"
+  v-text="ticketInfo.flight.fromSegments[ticketInfo.flight.fromSegment - 1].depAirportZh"
+></span>
 ```
 
 我们可以使用 `vm.$set` 手动定义一层数据。
 
-
 ```js
-vm.$set("depAirportZh" ,ticketInfo.flight.fromSegments[ticketInfo.flight.fromSegments - 1] .depAirportZh)
+vm.$set(
+  'depAirportZh',
+  ticketInfo.flight.fromSegments[ticketInfo.flight.fromSegments - 1]
+    .depAirportZh
+)
 ```
 
-## data中没有定义计算属性，它是如何被使用的
+## data 中没有定义计算属性，它是如何被使用的
 
 如下代码：
 
 ```js
-<div id="example">
+;<div id="example">
   a = {{ a }}, b = {{ b }}
 </div>
 
@@ -346,10 +340,10 @@ var vm = new Vue({
   },
   computed: {
     b: function() {
-      return this.a + 1;
+      return this.a + 1
     }
   }
-});
+})
 ```
 
-对于上面计算属性b是怎么被使用的？实际上它并没有把计算数据放到`$data`里，而是通过`Object.defineProperty(this, key, def)`直接定义到了实例上。
+对于上面计算属性 b 是怎么被使用的？实际上它并没有把计算数据放到`$data`里，而是通过`Object.defineProperty(this, key, def)`直接定义到了实例上。

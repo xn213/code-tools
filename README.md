@@ -13,7 +13,7 @@
 
 ### Vue
 
-- 全局安装vue-cli3
+- 全局安装 vue-cli3
 
 ```
 cnpm install -g @vue/cli
@@ -21,7 +21,8 @@ cnpm install -g @vue/cli
 vue -V // 查看版本是否为3.x
 ```
 
-- 启动单个vue文件
+- 启动单个 vue 文件
+
 ```
 // 安装扩展，此后可以快速启动单个vue文件
 
@@ -29,8 +30,9 @@ cnpm install -g @vue/cli-service-global
 
 vue serve demo.vue
 ```
-> 快速启动demo文件
-> // 如果style中lang='scss' 则需要安装sass依赖sass-loader
+
+> 快速启动 demo 文件
+> // 如果 style 中 lang='scss' 则需要安装 sass 依赖 sass-loader
 
 - 使用 vue 2.x 的模板
 
@@ -41,25 +43,25 @@ cnpm install -g @vue/cli-init
 vue init webpack my-project
 ```
 
-------------------------------------------------------------
+---
 
 ### Node
 
 - 管理 node 版本
-- 
+-
+
 ```
 cnpm install -g n // 安装模块n 这个模块是专门用来管理node.js版本的
 
 n stable // 升级node.js到最新稳定版
 
-n后面也可以跟随版本号比如：
-
+n 后面也可以跟随版本号比如：
 n v0.10.26
 或
 n 0.10.26
 ```
 
-- node 开启本地服务器:  node / express 
+- node 开启本地服务器: node / express
 
 ```
 node server.js // 开启本地服务器
@@ -80,7 +82,9 @@ cnpm i serve -g
 
 应用: <pro-name>/使用: serve -s dist
 ```
----------------------------------------------------
+
+---
+
 - python37 启动一个本地服务器 项目文件夹下:
 
 ```
@@ -94,58 +98,64 @@ python -m http.server 8080
 ### npm
 
 - 淘宝镜像
+
 ```
 npm install -g cnpm --registry=https://registry.npm.taobao.org
 ```
 
 - 常用命令
+
 ```bash
 npm -v                 # 显示版本，检查npm 是否正确安装。
- 
+
 npm install express    # 安装express模块
- 
+
 npm install -g express # 全局安装express模块
- 
+
 npm list               # 列出已安装模块
- 
+
 npm show express       # 显示模块详情
- 
+
 npm update             # 升级当前目录下的项目的所有模块
- 
+
 npm update express     # 升级当前目录下的项目的指定模块
- 
+
 npm update -g express  # 升级全局安装的express模块
- 
+
 npm uninstall XXX -S   # 删除XXX依赖
 npm uninstall express  # 删除指定的模块
 ```
 
-- [MongoDB 数据库 登录:](https://cloud.mongodb.com/user) (mLab(注册送500M)) 已转移 MongoDB下
-  
-- [加密 bcrypt](https://www.npmjs.com/package/bcrypt) : 
+- [MongoDB 数据库 登录:](https://cloud.mongodb.com/user) (mLab(注册送 500M)) 已转移 MongoDB 下
+
+- [加密 bcrypt](https://www.npmjs.com/package/bcrypt) :
 
   后端服务器对传过来的注册密码加密, 什么地方用就在什么地方引
+
 ```
 npm i bcrypt
 ```
 
-- [jwt 登录返回token](https://www.npmjs.com/package/jsonwebtoken) => 使用jwt(jsonwebtoken)
+- [jwt 登录返回 token](https://www.npmjs.com/package/jsonwebtoken) => 使用 jwt(jsonwebtoken)
+
 ```
 npm i jsonwebtoken
 ```
 
-- 验证token 使用 passport passport-jwt
+- 验证 token 使用 passport passport-jwt
+
 ```
 npm i passport passport-jwt
 ```
 
-- vue前后端连载 `cnpm i concurrently`
-  
-  // 后端项目放外面, 项目里面新建vue前端项目client
-  
-  // 而后配置 vue/package.json 加 `"start": "npm run serve" `
-  
-  // 而后配置后端 package.json 
+- vue 前后端连载 `cnpm i concurrently`
+
+  // 后端项目放外面, 项目里面新建 vue 前端项目 client
+
+  // 而后配置 vue/package.json 加 `"start": "npm run serve"`
+
+  // 而后配置后端 package.json
+
 ```json
 "scripts": {
   "client-install": "npm install --prefix client", // 新加 client前端 install依赖的模块,代表启动的时候要装client依赖的模块(--prefix 前缀)
@@ -156,60 +166,59 @@ npm i passport passport-jwt
 },
 ```
 
+---
 
-------------------------------------------------------------
-------------------------------------------------------------
-  
+---
+
 ## 开发工具
 
 ### 命令行 `Terminal Emulator`
 
 1. 本地生成秘钥 SSH: `ssh-keygen -t rsa -C "yourEmail"`
 
-2. [Cmder.exe](https://cmder.net/) win 集成 git / 部分linux命令 [官方下载](https://github.com/cmderdev/cmder/releases/download/v1.3.12/cmder.zip) / [静态下载](http://xn213-img.test.upcdn.net/res/codetools/cmder.zip)
+2. [Cmder.exe](https://cmder.net/) win 集成 git / 部分 linux 命令 [官方下载](https://github.com/cmderdev/cmder/releases/download/v1.3.12/cmder.zip) / [静态下载](http://xn213-img.test.upcdn.net/res/codetools/cmder.zip)
 
-    - 添加到鼠标右键 命令行: `Cmder.exe /REGISTER ALL`
+   - 添加到鼠标右键 命令行: `Cmder.exe /REGISTER ALL`
 
-3. 命令行翻译小工具: 
-    - `cnpm i fanyi -g`
-    - Useage: `fanyi <要翻译的内容>`
+3. 命令行翻译小工具:
+   - `cnpm i fanyi -g`
+   - Useage: `fanyi <要翻译的内容>`
 
-------------------------------------------------------------
+---
 
 ### Chrome
 
-1. 插件: 
+1. 插件:
 
-- [Surfingkeys github](https://github.com/brookhong/surfingkeys) || 安装 :  [Chrome web store](https://chrome.google.com/webstore/detail/surfingkeys/gfbliohnnapiefjpjlpjnehglfpaknnc) **替代 Vimium**
+- [Surfingkeys github](https://github.com/brookhong/surfingkeys) || 安装 : [Chrome web store](https://chrome.google.com/webstore/detail/surfingkeys/gfbliohnnapiefjpjlpjnehglfpaknnc) **替代 Vimium**
 
-  - <del>[Vimium: ](https://vimium.github.io/)  超级方便的[快捷键](http://xn213-img.test.upcdn.net/res/img/Chrome-Vimium快捷键.jpg)操作</del>
+  - <del>[Vimium: ](https://vimium.github.io/) 超级方便的[快捷键](http://xn213-img.test.upcdn.net/res/img/Chrome-Vimium快捷键.jpg)操作</del>
 
+* [FeHelper](https://www.baidufe.com/fehelper) → [github](https://github.com/zxlie/FeHelper)
 
-- [FeHelper](https://www.baidufe.com/fehelper) → [github](https://github.com/zxlie/FeHelper)
+* [下载+: ]()管理下载文件
 
-- [下载+: ]()管理下载文件
+* [掘金: new 标签页]()
 
-- [掘金: new标签页]()
+* [画词翻译]()
 
-- [画词翻译]()
+* [JSON Viewer]()
 
-- [JSON Viewer]()
+* [Clear Cache]()
 
-- [Clear Cache]()
+* [crxMouse](https://crxmouse.com/zh-hans/)
 
-- [crxMouse](https://crxmouse.com/zh-hans/)
+* [ADblock Plus]()
 
-- [ADblock Plus]()
+* [Vue.js devtools]()
 
-- [Vue.js devtools]()
+* [Octotree: github 目录]()
 
-- [Octotree: github目录]()
+* [Git History Browser Extension]()
 
-- [Git History Browser Extension]()
+* [Allow-Control-Allow-Origin]()
 
-- [Allow-Control-Allow-Origin]()
-
-------------------------------------------------------------
+---
 
 ### VSCode
 
@@ -241,11 +250,11 @@ npm i passport passport-jwt
 
 - [GitLens — Git supercharged](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
 
-- [github插件同步: Settings Sync](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync)
+- [github 插件同步: Settings Sync](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync)
 
 - [中文 Chinese (Simplified) Language Pack for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=MS-CEINTL.vscode-language-pack-zh-hans)
 
-- [编译sass: Live Sass Compiler]()
+- [编译 sass: Live Sass Compiler]()
 
 - [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)
 
@@ -269,16 +278,15 @@ npm i passport passport-jwt
 
 - [设置背景: background]()
 
-------------------------------------------------------------
+---
 
 ### 其他工具
 
-- [win按键回显工具: KeyCastOW](https://brookhong.github.io/2014/04/28/keycast-on-windows-cn.html) | [下载](https://www.ugmfree.it/Forum/messages.aspx?TopicID=513)
+- [win 按键回显工具: KeyCastOW](https://brookhong.github.io/2014/04/28/keycast-on-windows-cn.html) | [下载](https://www.ugmfree.it/Forum/messages.aspx?TopicID=513)
 
 - [mac: KeyCastr](https://github.com/keycastr/keycastr)
 
-
-- 全局安装 sgo , 克隆各种官方文档到本地 离线阅读, 
+* 全局安装 sgo , 克隆各种官方文档到本地 离线阅读,
 
   将文档克隆到本地，通过 sgo 工具预览本地各种文档的。
 
@@ -289,7 +297,8 @@ sgo --fallback index.html # 创建静态服务，预览网站
 
 // 如: [cn.vuejs.org](git clone https://github.com/vuejs/cn.vuejs.org.git --depth 1 -b gh-pages)
 
-  - - #### React
+- - #### React
+
 ```bash
 git clone https://github.com/reactjs/zh-hans.reactjs.org.git --depth 1 -b gh-pages
 
@@ -298,12 +307,14 @@ cd zh-hans.reactjs.org # 进入目录
 sgo --fallback index.html # 创建静态服务，预览网站
 ```
 
-  - - #### Vue
+- - #### Vue
+
 ```bash
 git clone https://github.com/vuejs/cn.vuejs.org.git --depth 1 -b gh-pages
 ```
 
-  - - #### Ant Design
+- - #### Ant Design
+
 ```bash
 git clone https://gitee.com/ant-design/ant-design.git --depth 1 -b gh-pages
 
@@ -312,7 +323,8 @@ git clone https://gitee.com/ant-design/ant-design.git --depth 1 -b gh-pages
 git clone https://github.com/ant-design/ant-design.git --depth 1 -b gh-pages
 ```
 
-  - - #### Ant Design Pro
+- - #### Ant Design Pro
+
 ```bash
 git clone https://gitee.com/ant-design/ant-design-pro-site.git --depth 1 -b master
 
@@ -321,7 +333,8 @@ git clone https://gitee.com/ant-design/ant-design-pro-site.git --depth 1 -b mast
 git clone https://github.com/ant-design/ant-design-pro.git --depth 1 -b gh-pages
 ```
 
-  - - #### uiw
+- - #### uiw
+
 ```bash
 git clone https://gitee.com/uiw/uiw.git --depth 1 -b gh-pages
 
@@ -330,22 +343,22 @@ git clone https://gitee.com/uiw/uiw.git --depth 1 -b gh-pages
 git clone https://github.com/uiwjs/uiwjs.github.io.git --depth 1 -b master
 ```
 
-
 ### 博客创建工具
 
-1. hexo  [使用 hexo 创建博客](https://xn213.github.io/hugo-blog/2019/07/hexo-create-blog/)
+1. hexo [使用 hexo 创建博客](https://xn213.github.io/hugo-blog/2019/07/hexo-create-blog/)
 
-    hexo 创建的博客 git 部署工具: 项目根目录安装
-    ```shell
-    cnpm i --save hexo-deployer-git
-    ```
+   hexo 创建的博客 git 部署工具: 项目根目录安装
 
-2. hugo  [使用 hugo 创建博客](https://xn213.github.io/hugo-blog/2019/07/hugo-create-blog/)
+   ```shell
+   cnpm i --save hexo-deployer-git
+   ```
 
-    - 相对于hexo, 简单, 不易出错
-   
+2. hugo [使用 hugo 创建博客](https://xn213.github.io/hugo-blog/2019/07/hugo-create-blog/)
+
+   - 相对于 hexo, 简单, 不易出错
+
 3. VuePress - Vue 驱动的静态网站生成器 文档类型
 
-    - [中文文档](https://vuepress.vuejs.org/zh/)
+   - [中文文档](https://vuepress.vuejs.org/zh/)
 
-    - [VuePress + GitHubPages 搭建博客](https://xn213.github.io/fe-notes/CodeTools/Vuepress/GithubPagesVuepressBlog.html)
+   - [VuePress + GitHubPages 搭建博客](https://xn213.github.io/fe-notes/CodeTools/Vuepress/GithubPagesVuepressBlog.html)
