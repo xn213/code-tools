@@ -174,6 +174,13 @@ npm i passport passport-jwt
 
 ### 命令行 `Terminal Emulator`
 
+#### 常用命令：
+
+- 1. `ls -l` 在一行显示文件夹
+- 2. `ls -il` 在一行显示文件夹(第一列显示索引)
+- 3. ls -lt   按修改时间排序，正序显示
+- 4. ls -ltr  按修改时间排序，反序显示
+
 1. 本地生成秘钥 SSH: `ssh-keygen -t rsa -C "yourEmail"`
 
 2. [Cmder.exe](https://cmder.net/) win 集成 git / 部分 linux 命令 [官方下载](https://github.com/cmderdev/cmder/releases/download/v1.3.12/cmder.zip) / [静态下载](http://xn213-img.test.upcdn.net/res/codetools/cmder.zip)
