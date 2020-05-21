@@ -186,11 +186,19 @@ npm i passport passport-jwt
 
 ---
 
+### Git
+
+1. [Git 安装包国内镜像下载](https://npm.taobao.org/mirrors/git-for-windows/)
+
+---
+
 ### Chrome
 
-1. 插件:
+1. [极简插件： https://chrome.zzzmh.cn/](https://chrome.zzzmh.cn/)
 
-- [Surfingkeys github](https://github.com/brookhong/surfingkeys) || 安装 : [Chrome web store](https://chrome.google.com/webstore/detail/surfingkeys/gfbliohnnapiefjpjlpjnehglfpaknnc) **替代 Vimium**
+2. 推荐插件:
+
+- [Surfingkeys: github地址 ](https://github.com/brookhong/surfingkeys) || 安装 : [Chrome web store](https://chrome.google.com/webstore/detail/surfingkeys/gfbliohnnapiefjpjlpjnehglfpaknnc) **替代 Vimium**
 
   - <del>[Vimium: ](https://vimium.github.io/) 超级方便的[快捷键](http://xn213-img.test.upcdn.net/res/img/Chrome-Vimium快捷键.jpg)操作</del>
 

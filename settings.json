@@ -29,7 +29,9 @@
     }
   ],
   "eslint.options": {
-    "plugins": ["html"]
+    "plugins": [
+      "html"
+    ]
   },
   "files.associations": {
     "*.vue": "vue",
@@ -69,7 +71,10 @@
   "material-icon-theme.folders.theme": "classic",
   "editor.renderIndentGuides": false,
   "workbench.iconTheme": "material-icon-theme",
-  "importCost.javascriptExtensions": ["\\.jsx?$", "\\.vue$"],
+  "importCost.javascriptExtensions": [
+    "\\.jsx?$",
+    "\\.vue$"
+  ],
   "python.pythonPath": "/usr/bin/python2.7",
   "emmet.includeLanguages": {
     "wxml": "html"
@@ -80,7 +85,7 @@
   "nginx-conf-hint.syntax": "sublime",
   "workbench.activityBar.visible": true,
   "editor.minimap.enabled": true,
-  "workbench.sideBar.location": "left",
+  "workbench.sideBar.location": "right",
   "editor.renderWhitespace": "all",
   "editor.renderControlCharacters": false
 }
