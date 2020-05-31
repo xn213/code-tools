@@ -1,7 +1,7 @@
 ---
 /*
- * @Author: xn213 
- * @Date: 2019-09-13 20:40:01 
+ * @Author: xn213
+ * @Date: 2019-09-13 20:40:01
  * @Last Modified by: xn213
  * @Last Modified time: 2019-10-13 23:00:50
  */
@@ -377,3 +377,15 @@ git clone https://github.com/uiwjs/uiwjs.github.io.git --depth 1 -b master
    - [中文文档](https://vuepress.vuejs.org/zh/)
 
    - [VuePress + GitHubPages 搭建博客](https://xn213.github.io/fe-notes/CodeTools/Vuepress/GithubPagesVuepressBlog.html)
+
+  ```shell
+  # ...
+  # git push -f ...
+  cd -
+
+  git add .
+
+  git commit -m $1
+
+  git push origin master:master # 推到github上
+  ```
